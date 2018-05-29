@@ -7,6 +7,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReplyTest extends TestCase
 {
+
+    use RefreshDatabase;
     /**
      * A basic test example.
      *
