@@ -8,10 +8,10 @@ class Thread extends Model
 {
     protected $guarded = [];
 
-    public function path()
-    {
-        return '/threads' . $this->id;
-    }
+//    public function path()
+//    {
+//        return '/threads' . $this->id;
+//    }
 
     public function creator()
     {
