@@ -19,14 +19,14 @@ class PartecipateInForumTest extends TestCase
     public function anAuthenticatedUserMayPartecipateInForumThreads()
     {
         // given we have an authenticated user
-        $user = factory('App\User')->create();
+        $user = create('App\User');
         $this->be($user);
 
         // and an existing thread
-        $thread = factory('App\Thread')->create();
+        $thread = create('App\Thread');
 
         // when the user adds a reply to the thread
-        $reply = factory('App\Reply')->create();
+        $reply = create('App\Reply');
         $this->post('/threads/' . $thread->id . '/replies', $reply->toArray());
 
         // then their reply should be visible on the page
@@ -39,8 +39,8 @@ class PartecipateInForumTest extends TestCase
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
-        $thread = factory('App\Thread')->create();
-        $reply = factory('App\User')->create();
+        $thread = create('App\Thread');
+        $reply = create('App\User');
         $this->post('/threads/' . $thread->id . '/replies', $reply->toArray());
 
     }
