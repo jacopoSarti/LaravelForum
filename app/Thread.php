@@ -8,10 +8,10 @@ class Thread extends Model
 {
     protected $guarded = [];
 
-//    public function path()
-//    {
-//        return '/threads' . $this->id;
-//    }
+    public function path()
+    {
+        return '/threads/' . $this->channel->slug . '/' . $this->id;
+    }
 
     public function creator()
     {
@@ -26,5 +26,10 @@ class Thread extends Model
     public function addReply($reply)
     {
         $this->replies()->create($reply);
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
     }
 }
