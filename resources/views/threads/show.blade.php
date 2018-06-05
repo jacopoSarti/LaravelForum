@@ -28,7 +28,7 @@
         @if(auth()->check())
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="POST" action="/threads/{{$thread->id}}/replies">
+                <form method="POST" action="{{$thread->path()}}/replies">
 
                     {{csrf_field()}}
 
