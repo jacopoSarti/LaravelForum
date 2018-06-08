@@ -19,6 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .level { display: flex; align-items:center; }
+        .flex { flex: 1 }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -41,9 +46,12 @@
                                aria-expanded="false" v-pre>Browse <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/threads">All Threads</a></li>
+
                                 @if(auth()->check())
                                     <li><a  class="dropdown-item" href="/threads?by= {{auth()->user()->name}}">My Threads</a></li>
                                 @endif
+
+                                <li><a class="dropdown-item" href="/threads?popular=1">Popular Threads</a></li>
                             </ul>
                         </li>
 
