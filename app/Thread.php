@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use RecordsActivity;
+
     protected $guarded = [];
 
     protected $with = ['creator', 'channel'];
@@ -17,7 +20,6 @@ class Thread extends Model
         static::addGlobalScope('replies_count', function($builder){
            $builder->withCount('replies');
         });
-
     }
 
     public function path()

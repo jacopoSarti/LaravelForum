@@ -9,11 +9,6 @@ class ChannelTest extends TestCase
 {
 
     use RefreshDatabase;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
 
     /** @test */
     public function itConsistsOfThreads()
