@@ -13,11 +13,13 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Thread' => 'App\Policies\ThreadPolicy',
     ];
 
     /**
      * Register any authentication / authorization services.
+     *
+     * Give admin authorization to the user with name = 'Jacopo Sarti'
      *
      * @return void
      */
@@ -25,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::before(function($user){
+           if($user->name === 'Jacopo Sarti') return true;
+        });
     }
 }
