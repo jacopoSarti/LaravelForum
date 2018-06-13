@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Activity;
 use Tests\TestCase;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -92,8 +93,7 @@ class CreateThreadsTest extends TestCase
 
         $response->assertStatus(204);
 
-        $this->assertDatabaseMissing('threads', ['id' => $thread->id])
-            ->assertDatabaseMissing('replies', ['id' => $reply->id]);
+        $this->assertEquals(0, Activity::count());
     }
 
     public function publishThread($overrides = [])

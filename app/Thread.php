@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\RecordsActivity;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
@@ -19,6 +19,10 @@ class Thread extends Model
 
         static::addGlobalScope('replies_count', function($builder){
            $builder->withCount('replies');
+        });
+
+        static::deleting(function ($thread){
+            $thread->replies->each->delete();
         });
     }
 
